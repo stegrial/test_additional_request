@@ -25,8 +25,8 @@ Dir[File.join(spec_dir, 'support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
   $caps_chrome = Selenium::WebDriver::Remote::Capabilities.chrome
-  # $caps_chrome[:timeouts] = {}
-  # $caps_chrome[:timeouts]['implicit'] = 10000
+  $caps_chrome[:timeouts] = {}
+  $caps_chrome[:timeouts]['implicit'] = 10000
 
 
   Capybara.register_driver :true_automation_driver do |app|
@@ -35,7 +35,7 @@ RSpec.configure do |config|
 
   Capybara.configure do |capybara|
     capybara.run_server = false
-    capybara.default_max_wait_time = 10
+    # capybara.default_max_wait_time = 10
 
     capybara.default_driver = :true_automation_driver
   end
